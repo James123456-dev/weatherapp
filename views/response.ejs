@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script data-ad-client="ca-pub-5631646023386578" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<title>Weather App</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	
+	
+	<div class="container">
+		<h1><%= cityNameDisplay %></h1>
+		<form action="/" method="">
+			<table>
+				<tr>
+					<td>
+						<img src="<%= symbol %>" alt="wSymbol">
+					</td>
+					<td >
+						<h1><%= temperature %></h1>
+						<h2><%= description %></h2>
+						<small>Last Updated <br><%= dateAndTime %></small>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div class="container thecityname">
+		<form action="/" method="POST">
+		<h1>Search another city</h1>
+		<input required class="form-control" type="text" name="city" placeholder="Enter City Name" defautValue="<%= cityNameSearched %>">
+		<button class="btn gobutton btn-lg btn-primary btn-block type="submit">Go</button>
+		</form>
+	</div>
+	<footer>&copy Wematu-James</footer>
+	
+</body>
+</html>

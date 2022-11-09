@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { ensureAuth } = require("../middleware");
 const {
-	uploadPhoto,
 	addLocationData,
 	removeLocationData,
 	clearLocationData,

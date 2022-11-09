@@ -1,9 +1,7 @@
 const { asyncHandler } = require("../middleware");
 const { User } = require("../models");
 const { ErrorResponse, sendAuthorization } = require("../utils");
-const {
-	bcrypt: { encryptPassword, comparePassword }
-} = require("../utils");
+const { encryptPassword, comparePassword } = require("../utils");
 
 //@description          //Register user
 //@route                //api/auth/register

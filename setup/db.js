@@ -5,7 +5,7 @@ const {
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
-	`postgres://${username}:${password}@${host}:5432/${database}`,
+	`postgres://${username}:${password}@${host}:${port}}/${database}`,
 	{ logging: false }
 );
 

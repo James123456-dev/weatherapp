@@ -28,6 +28,6 @@ const User = sequelize.define(
 		timestamps: true
 	}
 );
-User.sync({ force: true });
+User.sync({ alter: true });
 
 module.exports = User;

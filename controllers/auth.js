@@ -1,10 +1,6 @@
 const { asyncHandler } = require("../middleware");
 const { User } = require("../models");
-const {
-	SuccessResponse,
-	ErrorResponse,
-	sendAuthorization
-} = require("../utils");
+const { ErrorResponse, sendAuthorization } = require("../utils");
 const {
 	bcrypt: { encryptPassword, comparePassword }
 } = require("../utils");
@@ -43,13 +39,4 @@ exports.login = asyncHandler(async (req, res, next) => {
 		return next(new ErrorResponse(401, "Invalid Credentials"));
 
 	sendAuthorization(201, { userId: user.User_Id }, res);
-});
-
-//@description          // Reset user password
-//@route                //api/auth/passwordreset
-//@requireAuth          //false
-exports.resetpassword = asyncHandler(async (req, res, next) => {
-	res.json({
-		message: "password reset"
-	});
 });

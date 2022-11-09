@@ -1,24 +1,27 @@
-require("dotenv").config({ path: "./config/config.env" }); //init config vars
-const express = require("express"),
-	morgan = require("morgan"),
-	bodyParser = require("body-parser"),
-	app = express(),
-	getweatherData = require("./api/routes/weather");
+require("dotenv").config({ path: "./.env" });
+const express = require("express");
+const morgan = require("morgan");
+const app = express();
 
 //Middleware
-// app.use(bodyParser.urlencoded({ extended: true })); //use body-parser
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.set("view engine", "ejs"); //Set view engine
 app.use(morgan("dev"));
 app.use(express.static(`${__dirname}/public`)); //Set static/public folder
 
-app.get("/", function (req, res) {
-	res.render("home");
-});
-app.use("/api/getdata", getweatherData);
+// Mount routers
+app.use("/api/weather", require("./routes/weather"));
 
-app.listen(3000, function () {
+//Mount error handler
+app.use(require("./middleware/errorHandler"));
+
+// Run server
+app.set("PORT", process.env.PORT || 5000);
+app.listen(
+	app.get("PORT"),
 	console.log(
-		"The server is running on port 3000 locally; Please make a request."
-	);
-});
+		`The server is running in ${process.env.NODE_ENV} on port ${app.get(
+			"PORT"
+		)} locally;`
+	)
+);

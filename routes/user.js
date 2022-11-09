@@ -5,15 +5,15 @@ const {
 	addLocationData,
 	removeLocationData,
 	clearLocationData,
-	getUserProfile
+	getUserProfile,
+	getLocationHistory
 } = require("../controllers/user");
 
 // Auth middlware
 router.use(ensureAuth);
 
 // Routes
-router.post("/upload_profile_photo", uploadPhoto);
-router.post("/profile", getUserProfile);
+router.get("/profile", getUserProfile);
 router
 	.route("/history")
 	.get(getLocationHistory)

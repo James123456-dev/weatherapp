@@ -3,8 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const {
-	db: { connectDB },
-	passport
+	db: { connectDB }
 } = require("./setup");
 
 // Init app
@@ -12,15 +11,13 @@ const app = express();
 connectDB();
 
 //Middleware
-app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(express.static(`${__dirname}/public`)); //Set static/public folder
 app.use(cookieParser());
-// Mount routers
-app.use("/api/auth", require("./routes/auth"));
+app.use(express.urlencoded({ extended: false }));
 
-app.use("/api/weather", require("./routes/weather"));
+// Mount routers
+require("./routes")(app);
 
 //Mount error handler
 app.use(require("./middleware/errorHandler"));

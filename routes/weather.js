@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const { currentWeather } = require("../controllers/weather");
-const { passport } = require("../setup");
-// passport.authenticate("jwt", { session: false });
+const { ensureAuth } = require("../middleware");
 
+router.use(ensureAuth);
 router.get("/current_weather", currentWeather);
 
 module.exports = router;

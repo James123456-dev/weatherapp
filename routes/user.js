@@ -1,16 +1,24 @@
 const router = require("express").Router();
-
+const { ensureAuth } = require("../middleware");
 const {
-	register,
-	resetpassword,
-	login,
-	getCurrentUser
-} = require("../controllers/auth");
+	uploadPhoto,
+	addLocationData,
+	removeLocationData,
+	clearLocationData,
+	getUserProfile
+} = require("../controllers/user");
 
-router.post("/login", login);
-router.post("/register", register);
-router.post("/reset_password", resetpassword);
+// Auth middlware
+router.use(ensureAuth);
 
-router.get("/me", getCurrentUser);
+// Routes
+router.post("/upload_profile_photo", uploadPhoto);
+router.post("/profile", getUserProfile);
+router
+	.route("/history")
+	.get(getLocationHistory)
+	.post(addLocationData)
+	.delete(clearLocationData);
+router.delete("/history/:itemId", removeLocationData);
 
 module.exports = router;

@@ -1,3 +1,3 @@
 module.exports = {
-	passport: require("./passport")
+	db: require("./db")
 };

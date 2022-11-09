@@ -9,9 +9,27 @@ exports.uploadPhoto = asyncHandler(async (req, res, next) => {
 	});
 });
 
-//@description          //Add location search data to history
-//@route                //api/auth/login
+//@description          //Upload user photo
+//@route                //api/auth/register
 //@requireAuth          //false
+exports.getUserProfile = asyncHandler(async (req, res, next) => {
+	res.json({
+		message: "get User Profile"
+	});
+});
+
+//@description          //Get location search data to history
+//@route                //api/user/history
+//@requireAuth          //true
+exports.getLocationHistory = asyncHandler(async (req, res, next) => {
+	res.json({
+		message: "add location data"
+	});
+});
+
+//@description          //Add location search data to history
+//@route                //api/user/history
+//@requireAuth          //true
 exports.addLocationData = asyncHandler(async (req, res, next) => {
 	res.json({
 		message: "add location data"
@@ -19,8 +37,8 @@ exports.addLocationData = asyncHandler(async (req, res, next) => {
 });
 
 //@description          // Delete location search data from history
-//@route                //api/auth/passwordreset
-//@requireAuth          //false
+//@route                //api/user/history/:itemId
+//@requireAuth          //true
 exports.removeLocationData = asyncHandler(async (req, res, next) => {
 	res.json({
 		message: "remove location data"

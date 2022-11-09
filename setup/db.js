@@ -1,6 +1,6 @@
 const {
 	DBConfig: { host, port, username, password, database }
-} = require("../config");
+} = require(`../config/${process.env.NODE_ENV}.js`);
 
 const { Sequelize } = require("sequelize");
 

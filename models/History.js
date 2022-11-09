@@ -2,29 +2,26 @@ const { DataTypes } = require("sequelize");
 const { sequelize } = require("../setup/db");
 
 const User = sequelize.define(
-	"User",
+	"Location_History",
 	{
-		User_Id: {
+		Location_Id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			autoIncrement: true,
 			primaryKey: true
 		},
-		First_Name: {
+		User_Id: {
+			type: DataTypes.INTEGER,
+			allowNull: false
+		},
+		Location: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		Last_Name: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-		Email: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-		Password: {
-			type: DataTypes.STRING,
-			allowNull: false
+		Count: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			defaultValue: 0
 		}
 	},
 	{

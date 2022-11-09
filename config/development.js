@@ -1,8 +1,10 @@
 module.exports = {
 	AuthConfig: {
-		jwtExpire: "30d",
+		jwtExpire: process.env.JWT_EXPIRE,
 		jwtCookie: {
-			expires: new Date(Date.now() + 30 * 24 * 60 * 60),
+			expires: new Date(
+				Date.now() + +process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60
+			),
 			secure: false,
 			httpOnly: true
 		}

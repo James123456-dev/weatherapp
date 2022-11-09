@@ -26,3 +26,12 @@ exports.resetpassword = asyncHandler(async (req, res, next) => {
 		message: "password reset"
 	});
 });
+
+//@description          // Get logged in user
+//@route                //api/auth/me
+//@requireAuth          //true
+exports.getCurrentUser = asyncHandler(async (req, res, next) => {
+	res.json({
+		message: "current user "
+	});
+});

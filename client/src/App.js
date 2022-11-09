@@ -1,7 +1,9 @@
+//Pages
+import Weather from "./components/pages/Weather";
 function App() {
 	return (
 		<div className="App">
-			<header className="App-header">React App</header>
+			<Weather />
 		</div>
 	);
 }
